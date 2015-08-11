@@ -1,5 +1,12 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <form action="#" th:action="@{/todo/create}" th:object="${todo}" method="post">
+
     <p>Name: <input type="text" th:field="*{name}"/></p>
+
+    <p>Desc: <input type="text" th:field="*{desc}"></p>
+
+    <p>Due Date: <input type="date" th:field="*{dueDate}"></p>
 
     <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
 </form>

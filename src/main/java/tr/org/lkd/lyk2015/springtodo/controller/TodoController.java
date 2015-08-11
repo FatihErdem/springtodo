@@ -1,5 +1,6 @@
 package tr.org.lkd.lyk2015.springtodo.controller;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import tr.org.lkd.lyk2015.springtodo.model.Todo;
 import tr.org.lkd.lyk2015.springtodo.service.TodoService;
+
 
 @Controller
 @RequestMapping("/todo")
@@ -19,12 +22,19 @@ public class TodoController {
     @Autowired
     private TodoService todoService;
 
-    @RequestMapping("")
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public String list(Model model) {
         List<Todo> todos = todoService.getAll();
 
         model.addAttribute("todoList", todos);
         return "todoList";
+    }
+
+    @RequestMapping(value = "/mark", method = RequestMethod.POST)
+    public String checkDone(@RequestParam("id") Long id){
+
+        todoService.markAsDone(id, true);
+        return "redirect:/todo";
     }
 
 

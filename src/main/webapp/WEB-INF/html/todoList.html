@@ -1,5 +1,16 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+
 <h1>Spring</h1>
 
 <ul>
-    <li th:each="todo : ${todoList}"><p th:text="${todo.name}"></p></li>
+	<li th:each="todo : ${todoList}">
+
+		<form action="/todo/mark" method="post">
+			<p th:text="${todo.name}"></p>
+			<input th:type="checkbox" th:name="id" th:value="${todo.id}" th:checked="${todo.done}">
+			<button>Check done</button>
+		</form>
+
+	</li>
 </ul>

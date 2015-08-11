@@ -1,5 +1,7 @@
 package tr.org.lkd.lyk2015.springtodo.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Calendar;
 
@@ -21,6 +23,8 @@ public class Todo implements Serializable {
 
     @Column(name = "description")
     private String desc;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Calendar dueDate;
     private boolean done;
 
