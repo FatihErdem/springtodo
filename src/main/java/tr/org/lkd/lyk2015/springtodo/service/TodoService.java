@@ -53,7 +53,6 @@ public class TodoService implements Serializable {
     public void markAsDone(Long id, Boolean done){
         Todo todo = getById(id);
         todo.setDone(done);
-
     }
 
     public List<Todo> getAll() {

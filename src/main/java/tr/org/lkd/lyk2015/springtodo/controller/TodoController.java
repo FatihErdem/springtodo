@@ -45,7 +45,11 @@ public class TodoController {
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String editForm(@ModelAttribute Todo todo){
+    public String editForm(@RequestParam("id") Long id, Model model){
+
+        Todo todo = todoService.getById(id);
+        model.addAttribute("todo", todo);
+
 
         return "editForm";
     }

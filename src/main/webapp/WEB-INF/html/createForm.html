@@ -1,5 +1,5 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+             xmlns:th="http://www.thymeleaf.org">
 <form action="#" th:action="@{/todo/create}" th:object="${todo}" method="post">
 
     <p>Name: <input type="text" th:field="*{name}"/></p>
