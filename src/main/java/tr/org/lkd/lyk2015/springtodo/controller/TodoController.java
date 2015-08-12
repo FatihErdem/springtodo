@@ -44,21 +44,19 @@ public class TodoController {
         return "createForm";
     }
 
+
+    //RequestMapping icinde params='' fieldlar yazilabilir. Ancak bu sadece url'deki parametreler icin
+    //@RequestParam ise form data icerisinden alabiliyor.
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String editForm(@RequestParam("id") Long id, Model model){
+    public String editGet(@RequestParam("id") Long id,
+                          @RequestParam(value = "message", required = false) String message,
+                          Model model) {
 
         Todo todo = todoService.getById(id);
         model.addAttribute("todo", todo);
-
+        model.addAttribute("message", message);
 
         return "editForm";
-    }
-
-    @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public String edit(@ModelAttribute Todo todo){
-
-        todoService.update(todo);
-        return "redirect:/todo";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
@@ -66,6 +64,14 @@ public class TodoController {
         todoService.create(todo);
 
         return "redirect:/todo";
+    }
+
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public String editPost(@RequestParam("id") Long id, @ModelAttribute Todo todo, Model model) {
+
+        todoService.update(todo);
+        model.addAttribute("message", "success");
+        return "redirect:/todo/edit?id="+id;
     }
 
 }
