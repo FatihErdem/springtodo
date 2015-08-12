@@ -3,7 +3,9 @@ package tr.org.lkd.lyk2015.springtodo.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -68,4 +70,14 @@ public class Todo implements Serializable {
         this.done = done;
     }
 
+
+    public String getDate()
+    {
+        Date date = this.dueDate.getTime();
+        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+        String datetime= null;
+        datetime = format1.format(date);
+
+        return datetime;
+    }
 }

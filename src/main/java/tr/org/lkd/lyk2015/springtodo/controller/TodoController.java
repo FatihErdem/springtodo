@@ -54,6 +54,13 @@ public class TodoController {
         return "editForm";
     }
 
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public String edit(@ModelAttribute Todo todo){
+
+        todoService.update(todo);
+        return "redirect:/todo";
+    }
+
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(@ModelAttribute Todo todo) {
         todoService.create(todo);

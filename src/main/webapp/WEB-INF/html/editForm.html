@@ -1,14 +1,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<form th:action="@{'/todo/update'(id=${todo.id})}" th:object="${todo}" method="post">
+<form th:action="@{'/todo/edit'(id=${todo.id})}" th:object="${todo}" method="post">
 
     <p>Name: <input type="text" th:field="${todo.name}"/></p>
 
     <p>Desc: <input type="text" th:field="${todo.desc}"></p>
 
-    <p>Due Date: <input type="date" th:field="${todo.dueDate}"></p>
+    <p>Due Date: <input type="date" th:value="${todo.dueDate.getTime()}" th:field="*{dueDate}"/></p>
 
-    <p>Is Done? <input th:type="checkbox" th:name="id" th:value="${todo.id}" th:checked="${todo.done}"></p>
+    <p>Is Done? <input th:type="checkbox" th:name="done" th:checked="${todo.done}"></p>
+    <input th:type="hidden" th:name="id" th:value="${todo.id}"/>
 
     <p><input type="submit" value="Submit"/></p>
 </form>
