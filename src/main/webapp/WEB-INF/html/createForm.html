@@ -1,12 +1,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-             xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 <form action="#" th:action="@{/todo/create}" th:object="${todo}" method="post">
+    <table>
+        <tr>
+            <td><p>Name: </p></td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
 
-    <p>Name: <input type="text" th:field="*{name}"/></p>
+        <tr>
+            <td><p>Desc: </p></td>
+            <td><input type="text" th:field="*{desc}"></td>
+        </tr>
 
-    <p>Desc: <input type="text" th:field="*{desc}"></p>
+        <tr>
+            <td><p>Due Date: </p></td>
+            <td><input type="date" th:field="*{dueDate}"></td>
+        </tr>
 
-    <p>Due Date: <input type="date" th:field="*{dueDate}"></p>
+        <tr>
+            <td><br/></td>
+        </tr>
 
-    <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+        <tr>
+            <td><input type="submit" value="Submit"/></td>
+            <td><input type="reset" value="Reset"/></td>
+        </tr>
+    </table>
 </form>
