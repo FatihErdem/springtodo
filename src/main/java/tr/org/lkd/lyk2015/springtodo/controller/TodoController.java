@@ -31,7 +31,7 @@ public class TodoController {
     }
 
     @RequestMapping(value = "/mark", method = RequestMethod.POST)
-    public String checkDone(@RequestParam("id") Long id){
+    public String checkDone(@RequestParam("id") Long id) {
 
         todoService.markAsDone(id, true);
         return "redirect:/todo";
@@ -42,6 +42,12 @@ public class TodoController {
     public String createForm(@ModelAttribute Todo todo) {
 
         return "createForm";
+    }
+
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    public String editForm(@ModelAttribute Todo todo){
+
+        return "editForm";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
